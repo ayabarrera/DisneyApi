@@ -1,24 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 
-const CharacterList = () => {
-  const [characters, setCharacters] = useState([]);
-
-  useEffect(() => {
-    fetch("https://api.disneyapi.dev/character")
-      .then((response) => response.json())
-      .then((data) => setCharacters(data.data));
-  }, []);
-
+function DisneyCharacters({ name, imageUrl }) {
   return (
-    <div id="characters">
-      {characters.map((character) => (
-        <div className="character-card" key={character.id}>
-          <img src={character.imageUrl} alt={character.name} />
-          <h3>{character.name}</h3>
-        </div>
-      ))}
-    </div>
+    <article className="card">
+      <img
+        src={imageUrl}
+        alt={name}
+      />
+      <h2>{name}</h2> 
+    </article>
   );
-};
+}
 
-export default CharacterList;
+export default DisneyCharacters;
